@@ -12,6 +12,9 @@ async function query(queryObject) {
   try {
     await client.connect();
     return await client.query(queryObject);
+  } catch (error) {
+    console.error("Database query error:", error);
+    throw error;
   } finally {
     await client.end();
   }
